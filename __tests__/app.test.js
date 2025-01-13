@@ -44,7 +44,49 @@ describe("Test de la API", () => {
     expect(valorCarteraXMes).toHaveBeenCalledWith(mes, anio, filtro);
   });
 
-  it(
-    "Debería de devolver el valor de cartera para Catalogo de noviembre de 2024"
-  );
+  it("Debería de devolver el valor de cartera para Catalogo de noviembre de 2024", async () => {
+    valorCarteraXMembresia.mockResolvedValue(1000);
+
+    const mes = "Noviembre";
+    const anio = 2024;
+    const membresia = "Catalogo";
+    const filtro = {};
+
+    const response = await request(app)
+      .post("/api/valor-cartera-membresia")
+      .send({ mes, anio, membresia, filtro });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({ status: true, data: 1000 });
+    expect(valorCarteraXMembresia).toHaveBeenCalledWith(
+      mes,
+      anio,
+      membresia,
+      filtro
+    );
+  });
+
+  it("Debería de devolver el valor de cartera para LEI de noviembre de 2024 que sean de industria Salud", async () => {
+    valorCarteraXMembresia.mockResolvedValue(0);
+
+    const mes = "Diciembre";
+    const anio = 2024;
+    const membresia = "LEI";
+    const filtro = {
+      Industria: "Salud",
+    };
+
+    const response = await request(app)
+      .post("/api/valor-cartera-membresia")
+      .send({ mes, anio, membresia, filtro });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({ status: true, data: 0 });
+    expect(valorCarteraXMembresia).toHaveBeenCalledWith(
+      mes,
+      anio,
+      membresia,
+      filtro
+    );
+  });
 });

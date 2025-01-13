@@ -49,7 +49,7 @@ describe("valorCarteraXMembresia", () => {
   });
 
   it("Deberia devolver 0 cuando no hay documentos para Catalogo", async () => {
-    model.aggregate.mockResolvedValue([{ total: 0 }]);
+    model.aggregate.mockResolvedValue([]);
 
     const resultado = await valorCarteraXMembresia(
       "Noviembre",
