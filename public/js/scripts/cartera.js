@@ -15,7 +15,7 @@ const actualizaCarteraTotal = () => {
 };
 
 const actualizaCarteraMembresia = (membresia) => {
-  const filtro = Herramientas.filtros();
+  const filtro = Herramientas.filtrosMembresias();
   filtro.membresia = membresia;
   fetch("/api/valor-cartera-membresia", {
     method: "POST",
@@ -41,5 +41,12 @@ $(document).ready(function () {
   $("#filterButton").on("click", function (e) {
     e.preventDefault();
     actualizaCarteraTotal();
+  });
+
+  $("#filterButtonMem").on("click", function (e) {
+    e.preventDefault();
+    ["Catalogo", "Codigo", "LEI"].map((elemento) =>
+      actualizaCarteraMembresia(elemento)
+    );
   });
 });

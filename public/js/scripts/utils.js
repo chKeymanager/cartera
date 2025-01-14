@@ -15,28 +15,41 @@ const Herramientas = {
     return Array.isArray(filtro) ? { $in: filtro } : filtro;
   },
 
-  filtros: () => {
-    const campos = [
-      "Tamaño",
-      "Industria",
-      "Region",
-      "Catalogo",
-      "Codigo",
-      "LEI",
-    ];
+  generaFiltros: (campos, idSufijo = "") => {
     const filtro = {};
 
     campos.forEach((campo) => {
-      const valor = $(`#${campo.slice(0, 3).toLowerCase()}`).val();
+      const valor = $(`#${campo.slice(0, 3).toLowerCase()}${idSufijo}`).val();
       if (valor?.length) {
         filtro[campo] = Herramientas.obtieneValorSelect(valor);
       }
     });
+    return filtro;
+  },
 
+  filtros: () => {
     return {
       mes: "Noviembre",
       anio: 2024,
-      filtro: filtro,
+      filtro: Herramientas.generaFiltros([
+        "Tamaño",
+        "Industria",
+        "Region",
+        "Catalogo",
+        "Codigo",
+        "LEI",
+      ]),
+    };
+  },
+
+  filtrosMembresias: () => {
+    return {
+      mes: "Noviembre",
+      anio: 2024,
+      filtro: Herramientas.generaFiltros(
+        ["Tamaño", "Industria", "Region"],
+        "1"
+      ),
     };
   },
 };
