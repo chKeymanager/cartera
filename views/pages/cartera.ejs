@@ -9,25 +9,6 @@
     <!-- Document Title
 	============================================= -->
     <title>GS1 - HISTORICOS</title>
-    <!-- <script>
-      window.onpageshow = function () {
-        fetch("/validar")
-          .then((result) => result.json())
-          .then((rs) => {
-            console.log(rs);
-            var usuario = rs.usuario;
-            if (!usuario) {
-              window.location = `/`;
-            } else {
-              document.getElementById("ultimaVisita").textContent =
-                rs.date_update;
-            }
-          })
-          .catch((error) => {
-            console.log("Error: ", error);
-          });
-      };
-    </script> -->
   </head>
 
   <body class="stretched">
@@ -106,7 +87,7 @@
                         <tr>
                           <td class="py-4 fw-bold fs-1" id="datos-user" colspan="2">
                             <!-- Contenido dentro del td con colspan=2 -->
-                            <span style="color: #00286e">VC TOTAL: </span><span style="color:#ff632d">$ 191,510.00</span>
+                            <span style="color: #00286e">VC TOTAL: </span><span style="color:#ff632d" id="span-vc-total">$ 191,510.00</span>
                           </td>
                         </tr>
                       </tbody>
@@ -116,43 +97,7 @@
                   <!-- Descarga -->
 
                   <hr class="div-hr_border mt-5" />
-                  <!-- <div class="col-lg-12 d-flex mt-5 p-0">
-                    <div class="col-lg-6">
-                      <span>El archivo está listo para generar el reporte.</span>
-                      <div class="btn-group ps-3">
-                        <a
-                          type="button"
-                          class="btn bg_primary_blue color_primary_gray_light"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          id="download_file"
-                        >
-                          GENERAR
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 text-end">
-                      <div id="container_loader_file" style="display: none">
-                        <span>El archivo está listo para la descarga.</span>
-                        <div class="btn-group ps-3">
-                          <a
-                            type="button"
-                            class="btn bg_primary_orange color_primary_gray_light"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            id="dwnf"
-                          >
-                            DESCARGAR
-                          </a>
-                        </div>
-                      </div>
-                      <div class="overlay-file" style="display: none">
-                        <div class="spinner-border" role="status">
-                          <span class="visually-hidden">Loading...</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
+                  
                 </div>
               </div>
 
@@ -187,7 +132,7 @@
                         <tr>
                           <td class="py-4 fw-bold fs-1" id="datos-user" colspan="2">
                             <!-- Contenido dentro del td con colspan=2 -->
-                            <span style="color: #00286e">VC TOTAL: </span><span style="color:#ff632d">$ 191,510.00</span>
+                            <span style="color: #00286e">VC TOTAL: </span><span style="color:#ff632d" id="span-vc-codigo">$ 191,510.00</span>
                           </td>
                         </tr>
                       </tbody>
@@ -207,7 +152,7 @@
                         <tr>
                           <td class="py-4 fw-bold fs-1" id="datos-user" colspan="2">
                             <!-- Contenido dentro del td con colspan=2 -->
-                            <span style="color: #00286e">VC TOTAL: </span><span style="color:#ff632d">$ 191,510.00</span>
+                            <span style="color: #00286e">VC TOTAL: </span><span style="color:#ff632d" id="span-vc-catalogo">$ 191,510.00</span>
                           </td>
                         </tr>
                       </tbody>
@@ -227,7 +172,7 @@
                         <tr>
                           <td class="py-4 fw-bold fs-1" id="datos-user" colspan="2">
                             <!-- Contenido dentro del td con colspan=2 -->
-                            <span style="color: #00286e">VC TOTAL: </span><span style="color:#ff632d">$ 191,510.00</span>
+                            <span style="color: #00286e">VC TOTAL: </span><span style="color:#ff632d" id="span-vc-lei">$ 191,510.00</span>
                           </td>
                         </tr>
                       </tbody>
@@ -291,6 +236,7 @@
     <!-- Scripts
 	============================================= -->
     <%- include ('../partials/scripts'); %>
+    <script src="js/scripts/cartera.js"></script>
     <!-- #Scripts end -->
   </body>
 </html>

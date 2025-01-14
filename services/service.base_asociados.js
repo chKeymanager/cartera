@@ -16,7 +16,7 @@ const valorCarteraXMes = async (mes, anio, filtro = {}) => {
         $group: {
           _id: null,
           total: {
-            $sum: "VC Total",
+            $sum: "$VC Total",
           },
         },
       },
@@ -48,7 +48,7 @@ const valorCarteraXMembresia = async (mes, anio, membresia, filtro = {}) => {
         $group: {
           _id: null,
           total: {
-            $sum: `VC ${membresia}`,
+            $sum: `$VC ${membresia}`,
           },
         },
       },
